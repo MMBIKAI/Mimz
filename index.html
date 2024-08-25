@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mimz Abayas - Coming Soon</title>
+    <!-- Include Noto Sans Arabic font -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Cairo', sans-serif;
+            color: #a4ad47;
+            text-align: center;
+            direction: rtl;
+            overflow: hidden; /* Prevent scrollbars from appearing */
+            background-color: #a4ad47; /* Background color */
+        }
+        .overlay {
+            position: relative;
+            z-index: 1; /* Ensure content is above the starfield animation */
+            background-color: rgba(49, 53, 23, 0.8); /* #313517 with 80% opacity */
+            padding: 50px;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0; /* Start with invisible */
+            animation: fadeIn 2s forwards; /* Fade in effect */
+            box-sizing: border-box; /* Include padding and border in element's total width and height */
+        }
+        .logo {
+            margin-bottom: 20px;
+        }
+        .logo img {
+            width: 250px; /* Adjust the width as needed */
+            max-width: 90%; /* Ensure it fits within the viewport */
+        }
+        .content {
+            max-width: 90%; /* Ensure text content fits within the viewport */
+        }
+        h1, p {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #a4ad47; /* Text color */
+            font-family: 'Noto Sans Arabic', sans-serif; /* Apply Arabic font */
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Canvas for Starfield Animation */
+        .starfield-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; /* Prevent interaction with canvas */
+        }
+    </style>
+</head>
+<body>
+
+    <canvas class="starfield-canvas"></canvas>
+    <div class="overlay">
+        <div class="logo">
+            <img src="mimz_logo-removebg-preview.png" alt="Mimz Abayas Logo">
+        </div>
+        <div class="content">
+            <h1>قريباً</h1>
+            <p>موقعنا الإلكتروني الجديد قيد الإنشاء</p>
+            <h1>Coming Soon</h1>
+            <p>Our website is under construction</p>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript for starfield animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const canvas = document.querySelector('.starfield-canvas');
+            const ctx = canvas.getContext('2d');
+            const stars = [];
+            let width, height;
+            const numStars = 100; // Number of stars
+
+            function resize() {
+                width = canvas.width = window.innerWidth;
+                height = canvas.height = window.innerHeight;
+            }
+
+            function createStars() {
+                stars.length = 0; // Clear existing stars
+                for (let i = 0; i < numStars; i++) {
+                    stars.push({
+                        x: Math.random() * width,
+                        y: Math.random() * height,
+                        size: Math.random() * 4 + 2, // Increase size range
+                        speed: Math.random() * 0.5 + 0.5
+                    });
+                }
+            }
+
+            function drawStars() {
+                ctx.clearRect(0, 0, width, height);
+                ctx.fillStyle = '#313517'; // Star color
+                ctx.beginPath();
+                stars.forEach(star => {
+                    ctx.moveTo(star.x, star.y);
+                    ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+                });
+                ctx.fill();
+            }
+
+            function updateStars() {
+                stars.forEach(star => {
+                    star.x -= star.speed;
+                    if (star.x < 0) {
+                        star.x = width;
+                        star.y = Math.random() * height;
+                    }
+                });
+            }
+
+            function animate() {
+                drawStars();
+                updateStars();
+                requestAnimationFrame(animate);
+            }
+
+            resize();
+            window.addEventListener('resize', resize);
+            createStars();
+            animate();
+        });
+    </script>
+
+</body>
+</html>
