@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mimz Abayas - Coming Soon</title>
+    <title>Mimz Abayas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:wght@400;700&family=Noto+Sans+Arabic:wght@400;700&display=swap" rel="stylesheet">
     <style>
         @font-face {
             font-family: 'GE-Hili';
@@ -52,11 +53,19 @@
             max-width: 90%; /* Ensure text content fits within the viewport */
         }
 
+        /* Apply different fonts for Arabic and English text */
         h1, p {
             font-size: 1.5em; /* Adjusted font size */
             margin-bottom: 20px;
             color: #313517; /* Text color */
-            font-family: 'GE-Hili', 'Noto Sans Arabic', sans-serif; /* Apply GE-Hili font with fallbacks */
+        }
+
+        h1, p.arabic {
+            font-family: 'GE-Hili', 'Noto Sans Arabic', sans-serif; /* Apply GE-Hili for Arabic text */
+        }
+
+        h1:not(.arabic), p:not(.arabic) {
+            font-family: 'Libre Caslon Text', serif; /* Apply Libre Caslon Text for English text */
         }
 
         @keyframes fadeIn {
@@ -84,8 +93,8 @@
             <img src="mimz_logo-removebg-preview.png" alt="Mimz Abayas Logo">
         </div>
         <div class="content">
-            <h1>قريباً</h1>
-            <p>موقعنا الإلكتروني الجديد قيد الإنشاء</p>
+            <h1 class="arabic">قريباً</h1>
+            <p class="arabic">موقعنا الإلكتروني الجديد قيد الإنشاء</p>
             <h1>Coming Soon</h1>
             <p>Our website is under construction</p>
         </div>
