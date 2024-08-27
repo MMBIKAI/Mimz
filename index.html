@@ -4,20 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mimz Abayas - Coming Soon</title>
-    <!-- Include Noto Sans Arabic font -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
     <style>
+        @font-face {
+            font-family: 'GE-Hili';
+            src: url('GEHili-Book.woff2') format('woff2'),
+                 url('GEHili-Book.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Cairo', sans-serif;
+            font-family: 'GE-Hili', 'Noto Sans Arabic', sans-serif; /* Apply GE-Hili font with fallbacks */
             color: #a4ad47;
             text-align: center;
-            direction: rtl;
+            direction: rtl; /* Right-to-left text direction for Arabic */
             overflow: hidden; /* Prevent scrollbars from appearing */
             background-color: #a4ad47; /* Background color */
         }
+
         .overlay {
             position: relative;
             z-index: 1; /* Ensure content is above the starfield animation */
@@ -32,21 +38,25 @@
             animation: fadeIn 2s forwards; /* Fade in effect */
             box-sizing: border-box; /* Include padding and border in element's total width and height */
         }
+
         .logo {
             margin-bottom: 20px;
         }
+
         .logo img {
             width: 250px; /* Adjust the width as needed */
             max-width: 90%; /* Ensure it fits within the viewport */
         }
+
         .content {
             max-width: 90%; /* Ensure text content fits within the viewport */
         }
+
         h1, p {
             font-size: 1.5em; /* Adjusted font size */
             margin-bottom: 20px;
             color: #313517; /* Text color */
-            font-family: 'Noto Sans Arabic', sans-serif; /* Apply Arabic font */
+            font-family: 'GE-Hili', 'Noto Sans Arabic', sans-serif; /* Apply GE-Hili font with fallbacks */
         }
 
         @keyframes fadeIn {

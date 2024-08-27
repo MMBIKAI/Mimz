@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'GE Hili';
+    src: url('GEHili-Book.woff2') format('woff2'),
+        url('GEHili-Book.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
